@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setvalue } from './redux-toolit/index';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+const url= import.meta.env.VITE_REACT_APP_BASE_URL;
 const Displayhomes = () => {
   const [houses, setHouses] = useState([]);
   const navigate = useNavigate();
@@ -18,11 +18,11 @@ const Displayhomes = () => {
       try {
        
         if (searchQuery) {
-          const response = await axios.get(`http://localhost:5000/api/query/${searchQuery}`);
+          const response = await axios.get(`${url}/api/query/${searchQuery}`);
           setHouses(response.data.msg);  
         } else {
           // if like user is not seacrhed anything then i should let user fetch homes(default)
-          const response = await axios.get("http://localhost:5000/api/home");
+          const response = await axios.get(`${url}/api/home`);
           setHouses(response.data);  // Set houses with all available data
         }
       } catch (error) {
@@ -56,7 +56,7 @@ const HouseCard = ({ house, handleViewDetails }) => {
   const handlefav = async (houseid) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/addtofav/${houseid}`,
+        `${url}/api/addtofav/${houseid}`,
         { withCredentials: true }
       );
 

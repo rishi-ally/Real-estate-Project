@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setloginuser, setUseractive } from "./redux-toolit";
+const url= import.meta.env.VITE_REACT_APP_BASE_URL;
 const Page2 = () => {
   const [bio, setbio] = useState("");
   const [phone, setphone] = useState("");
@@ -13,7 +14,7 @@ const dispatch=useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/register/page2", {
+      const response = await axios.post(`${url}/api/register/page2`, {
         bio,
         phone,
       },{withCredentials:true});

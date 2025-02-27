@@ -11,11 +11,11 @@ const QueryPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-
+  const url= import.meta.env.VITE_REACT_APP_BASE_URL;
   useEffect(() => {
     const fetchHouseDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/house/${houseId}`,{
+        const response = await axios.get(`${url}/api/house/${houseId}`,{
           withCredentials:true
         });
         console.log(response)
@@ -32,7 +32,7 @@ const QueryPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-   const response=   await axios.post('http://localhost:5000/api/queries', {
+   const response=   await axios.post(`${url}/api/queries`, {
         hostId: house.hostId,
         house: houseId,
         queryText,

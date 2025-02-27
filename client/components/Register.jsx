@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setloginuser, setUseractive } from "./redux-toolit";
-
+const url= import.meta.env.VITE_REACT_APP_BASE_URL;
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ const dispatch=useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/register", {
+      const response = await axios.post(`${url}/api/register`, {
         username,
         email,
         password,

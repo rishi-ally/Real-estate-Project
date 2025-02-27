@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-
+const url= import.meta.env.VITE_REACT_APP_BASE_URL;
 const HostProfile = () => {
   const houseId = useSelector((state) => state.Itemslice.currentItemInfo);
   const [host, setHost] = useState(null);
@@ -9,12 +9,12 @@ const HostProfile = () => {
   const fetchHouseDetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/house/${houseId}`,
+        `${url}/api/house/${houseId}`,
         { withCredentials: true }
       );
       
       const hostResponse = await axios.get(
-        `http://localhost:5000/api/host/${response.data.hostId}`,
+        `${url}/api/host/${response.data.hostId}`,
         { withCredentials: true }
       );
       setHost(hostResponse.data); 

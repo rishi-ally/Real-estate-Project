@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaMapMarkerAlt, FaRupeeSign, FaDoorOpen, FaDumbbell, FaShieldAlt, FaHome, FaUser } from "react-icons/fa";
 import Footer from "./Footer";
-
+const url= import.meta.env.VITE_REACT_APP_BASE_URL;
 const Viewdetails = () => {
   const houseId = useSelector((state) => state.Itemslice.currentItemInfo);
   console.log(houseId)
@@ -61,7 +61,7 @@ const Viewdetails = () => {
 
   const fetchHouseDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/house/${houseId}`, { withCredentials: true });
+      const response = await axios.get(`${url}/api/house/${houseId}`, { withCredentials: true });
       setHouse(response.data);
       console.log(house)
     } catch (error) {
