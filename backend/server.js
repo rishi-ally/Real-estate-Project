@@ -6,51 +6,55 @@ require("dotenv").config();
 const linking = require("./linked");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const fs=require('fs')
+const fs = require('fs');
 const app = express();
 const path = require('path');
+
+// Ensure the upload path exists
 const uploadPath = path.join(__dirname, 'public', 'uploads');
-
-
 if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath, { recursive: true });
 }
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// Middleware
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5000", "http://localhost:5173"],
+    origin: ["http://localhost:5000", "http://localhost:5173"], // Update with production URL when deployed
     credentials: true,
   })
 );
+
+// Session Middleware with MongoDB Store
 app.use(
   session({
-    secret:
-      process.env.JWT_SECRET ||
-      "fa3693916f03d17488815d746cefc1c17736cff40be132bec64df47446288448",
+    secret: process.env.JWT_SECRET || "fallback-secret-key", // Make sure to set JWT_SECRET in your env
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI || "mongodb://localhost:27017/realestate",
+      mongoUrl: process.env.MONGO_URI || "mongodb://localhost:27017/realestate", // Use dynamic URI or local fallback
+      dbName: process.env.DB_NAME || "realestate", // Dynamic DB name from env
     }),
-
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7, 
-      httpOnly: true, 
-      secure: false, 
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Make sure cookies are secure in production
     },
   })
 );
-const PORT = process.env.PORT || 5000;
-const MONGO_URI =
-  process.env.MONGO_URI || "mongodb://localhost:27017/realestate";
+
+// Routing
 app.use("/api", userRouter);
 
+const PORT = process.env.PORT || 5000;
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/realestate";
+
+// MongoDB connection
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(MONGO_URI, {})
+  .connect(MONGO_URI, { dbName: process.env.DB_NAME || "realestate" }) // Dynamic DB name from env
   .then(() => {
     console.log("✅ Connected to MongoDB");
 
