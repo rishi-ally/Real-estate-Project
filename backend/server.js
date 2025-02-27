@@ -33,7 +33,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.mongoURI || "mongodb://localhost:27017/realestate",
+      mongoUrl: process.env.MONGO_URI || "mongodb://localhost:27017/realestate",
     }),
 
     cookie: {
