@@ -63,7 +63,7 @@ const Viewdetails = () => {
     try {
       const response = await axios.get(`${url}/api/house/${houseId}`, { withCredentials: true });
       setHouse(response.data);
-      console.log(house)
+      console.log('in gouse',house)
     } catch (error) {
       if (error.response && error.response.status === 401) {
         alert("You must log in first! 🚫");
