@@ -3,16 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
- "homepage": "https://rishi-ally.github.io/Real-estate-Project",
-"scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "lint": "eslint .",
-  "preview": "vite preview",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-}
-,
+  "homepage": "https://rishi-ally.github.io/Real-estate-Project",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
@@ -23,11 +22,9 @@
     "class-variance-authority": "^0.7.1",
     "framer-motion": "^12.4.7",
     "lucide-react": "^0.475.0",
-"react": "^18.3.1",
-"react-dom": "^18.3.1",
-
+    "react": "^18.3.1",
     "react-avatar": "^5.0.3",
-   
+    "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.5",
@@ -45,6 +42,7 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
+    "nodemon": "^3.1.9",
     "postcss": "^8.5.1",
     "shadcn-ui": "^0.9.4",
     "tailwindcss": "^4.0.4",
