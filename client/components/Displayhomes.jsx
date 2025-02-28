@@ -24,6 +24,7 @@ const Displayhomes = () => {
           // if like user is not seacrhed anything then i should let user fetch homes(default)
           const response = await axios.get(`${url}/api/home`);
           setHouses(response.data);  // Set houses with all available data
+         
         }
       } catch (error) {
         console.log("Error in Displayhomes while fetching:", error);
