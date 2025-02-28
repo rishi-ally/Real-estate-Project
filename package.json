@@ -3,5 +3,8 @@
     "axios": "^1.7.9",
     "connect-mongo": "^5.1.0",
     "express-session": "^1.18.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
