@@ -24,7 +24,7 @@ const navigate=useNavigate()
     if (image) formData.append('image', image);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/uploadhouse', formData, {
+      const response = await axios.post('https://real-estate-project-19.onrender.com/api/uploadhouse', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
