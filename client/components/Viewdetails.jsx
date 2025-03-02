@@ -149,7 +149,7 @@ const handlequeryclick=(houseid)=>{
                 <FaDoorOpen className="text-blue-600 text-xl md:text-2xl mr-2" /> {house.interestedCount} people interested
               </div>
               <p className="text-gray-600 text-sm md:text-base italic bg-gray-100 p-3 md:p-4 rounded-lg shadow-md border-l-4 border-blue-500">
-                ✨ A home isn't just walls and a roof... (keep text the same)
+              ✨ A home isn't just walls and a roof... It's a space for memories, growth, and dreams. 🏠
               </p>
             </div>
           </div>
@@ -158,7 +158,8 @@ const handlequeryclick=(houseid)=>{
           <div className="w-full bg-yellow-100 p-3 md:p-4 rounded-lg shadow-lg">
             <h2 className="text-lg md:text-xl font-semibold text-gray-800">Important Information</h2>
             <p className="text-gray-600 mt-1 md:mt-2 text-sm md:text-base">
-              Please note that the availability... (keep text the same)
+            Please note that the availability of properties is updated regularly to reflect real-time information. 
+            Ensure to check for the most current status before making any decisions.
             </p>
           </div>
 
